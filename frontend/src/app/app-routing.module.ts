@@ -6,7 +6,7 @@ import {StartComponent} from "./start/start.component";
 
 const routes: Routes = [
     {path: '', component:  MainComponent},
-    {path: 'start', component:  StartComponent, canActivate: [AuthGuard] },
+    {path: 'start', component:  StartComponent },
 ];
 
 @NgModule({
