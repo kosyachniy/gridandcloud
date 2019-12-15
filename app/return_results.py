@@ -28,7 +28,7 @@ def return_results(id: str, correct: bool) -> None:
         routing_key='results',
         body=json.dumps(
             {
-                'id': str(id),
+                'id': id,
                 'res': correct
             }
         ),
