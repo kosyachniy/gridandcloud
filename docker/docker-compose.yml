@@ -1,7 +1,9 @@
 version: "3"
 services:
   worker_app:
-    build: ./computational_app/
+    build:
+      dockerfile: ../docker/computational_app/Dockerfile
+      context: ../app
     container_name: "checkers_main"
     restart: unless-stopped
     networks:
@@ -26,8 +28,10 @@ services:
       interval: 5s
       timeout: 15s
       retries: 1
-   api:
-     build: ./api_app/
+  api:
+    build:
+      dockerfile: ../docker/api_app/Dockerfile
+      context: ../app
      container_name: "api"
      restart: unless-stopped
      networks:
