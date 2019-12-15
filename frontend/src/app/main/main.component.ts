@@ -13,8 +13,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Yakushkin');
-    alert('Yakushkin');
+    console.log('work!!!!');
   }
 
 
