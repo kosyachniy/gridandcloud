@@ -27,7 +27,7 @@ services:
       timeout: 15s
       retries: 1
    api:
-     build: ./computational_app/
+     build: ./api_app/
      container_name: "api"
      restart: unless-stopped
      networks:
