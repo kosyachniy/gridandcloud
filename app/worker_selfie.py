@@ -2,8 +2,8 @@ from PIL import Image
 import io
 import json
 import numpy as np
-from .return_results import return_results
-from .mtcnn.detector import detect_faces
+from return_results import return_results
+from mtcnn.detector import detect_faces
 
 
 def construct_handler(th0=0.65, th1=0.2, th2=0.2, **kwargs):
