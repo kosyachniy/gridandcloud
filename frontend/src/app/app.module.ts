@@ -7,12 +7,10 @@ import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 
 import {HttpClientModule} from '@angular/common/http';
-import { StartComponent } from './start/start.component';
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    StartComponent,
   ],
   imports: [
     BrowserModule,
