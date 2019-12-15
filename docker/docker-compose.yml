@@ -1,7 +1,7 @@
 version: "3"
 services:
   worker_app:
-    build: .
+    build: ./computational_app/
     container_name: "checkers_main"
     restart: unless-stopped
     networks:
@@ -26,6 +26,17 @@ services:
       interval: 5s
       timeout: 15s
       retries: 1
+   api:
+     build: ./computational_app/
+     container_name: "api"
+     restart: unless-stopped
+     networks:
+       - queue_net
+     depends_on:
+       - rabbitmq
+     volumes:
+       - ../api:/app
+
 
 networks:
   queue_net:
