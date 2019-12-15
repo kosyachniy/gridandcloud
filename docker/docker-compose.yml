@@ -10,13 +10,13 @@ services:
     depends_on:
       - rabbitmq
     volumes:
-      - .:/app
+      - ../app:/app
   rabbitmq:
     image: "rabbitmq:latest"
     container_name: "rabbitmq"
     environment:
-      RABBITMQ_DEFAULT_USER: superego
-      RABBITMQ_DEFAULT_PASS: superego
+      RABBITMQ_DEFAULT_USER: grid
+      RABBITMQ_DEFAULT_PASS: cloud
     ports:
       - "5672:5672"
       - "15672:15672"
