@@ -1,17 +1,17 @@
 version: "3"
 services:
-  worker_app:
-    build:
-      dockerfile: ../docker/computational_app/Dockerfile
-      context: ../app
-    container_name: "checkers_main"
-    restart: unless-stopped
-    networks:
-      - queue_net
-    depends_on:
-      - rabbitmq
-    volumes:
-      - ../app:/app
+  # worker_app:
+  #   build:
+  #     dockerfile: ../docker/computational_app/Dockerfile
+  #     context: ../app
+  #   container_name: "checkers_main"
+  #   restart: unless-stopped
+  #   networks:
+  #     - queue_net
+  #   depends_on:
+  #     - rabbitmq
+  #   volumes:
+  #     - ../app:/app
   rabbitmq:
     image: "rabbitmq:latest"
     container_name: "rabbitmq"
@@ -47,6 +47,8 @@ services:
       context: ../frontend
     depends_on:
       - api
+    ports:
+      - "4200:4200"
     networks:
       - front_net
     volumes:
