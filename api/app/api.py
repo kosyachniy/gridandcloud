@@ -27,7 +27,7 @@ def index():
 	api = API(
 		server=SERVER,
 		socketio=sio,
-		# token=x['token'] if 'token' in x else None,
+		token=x['token'] if 'token' in x else None,
 	)
 
 	req = {}
