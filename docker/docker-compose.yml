@@ -32,14 +32,14 @@ services:
     build:
       dockerfile: ../docker/api_app/Dockerfile
       context: ../app
-     container_name: "api"
-     restart: unless-stopped
-     networks:
-       - queue_net
-     depends_on:
-       - rabbitmq
-     volumes:
-       - ../api:/app
+    container_name: "api"
+    restart: unless-stopped
+    networks:
+      - queue_net
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ../api:/app
 
 
 networks:
