@@ -44,4 +44,3 @@ if __name__ == '__main__':
         except BaseException as e:
             logging.error(e)
             i_loop = False
-
