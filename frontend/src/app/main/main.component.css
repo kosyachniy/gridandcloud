@@ -1,0 +1,33 @@
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputfile + label {
+  font-weight: 700;
+  cursor: pointer;
+  color: #17a2b8;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid  #17a2b8;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #17a2b8;
+  color: white;
+}
+.mainBlock{
+  margin-top: 100px;
+}
+.btn{
+  margin-top: 10px;
+}
+.spinner-border{
+  width: 1.5rem;
+  height: 1.5rem;
+}
