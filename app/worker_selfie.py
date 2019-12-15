@@ -10,7 +10,8 @@ def construct_handler(th0=0.65, th1=0.2, th2=0.2, **kwargs):
     def handle_passport(ch, method, properties, body):
         jdata = json.loads(body.decode('utf-8'))
         image = Image.open(io.BytesIO(jdata['img']))
-        return_results(correct=compute_result(image))
+        id = jdata['id']
+        return_results(id=id, correct=compute_result(image))
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
     def compute_result(image, th0=th0, th1=th1, th2=th2, **ignore) -> bool:
