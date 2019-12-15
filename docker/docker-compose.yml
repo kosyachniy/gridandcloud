@@ -1,0 +1,35 @@
+version: "3"
+services:
+  main_app:
+    build: .
+    container_name: "checkers_main"
+    restart: unless-stopped
+    networks:
+      - database_net
+      - queue_net
+    depends_on:
+      - rabbitmq
+    volumes:
+      - .:/app
+  rabbitmq:
+    image: "rabbitmq:latest"
+    container_name: "rabbitmq"
+    environment:
+      RABBITMQ_DEFAULT_USER: superego
+      RABBITMQ_DEFAULT_PASS: superego
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - queue_net
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5672"]
+      interval: 5s
+      timeout: 15s
+      retries: 1
+
+networks:
+  database_net:
+    driver: bridge
+  queue_net:
+    driver: bridge
