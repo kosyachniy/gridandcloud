@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
-import {AuthService} from "../auth.service";
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-main',
@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
     this.loader = true;
     this.userService.sendFile(this.fileToUpload).subscribe((res: any) => {
       console.log(res);
-      if (res.status === 200){
+      if (res.status === 200) {
         this.loader = false;
       }
     });
