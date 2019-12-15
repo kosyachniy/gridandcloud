@@ -36,12 +36,26 @@ services:
     restart: unless-stopped
     networks:
       - queue_net
+      - front_net
     depends_on:
       - rabbitmq
     volumes:
       - ../api:/app
+  front: 
+    build:
+      dockerfile: ../docker/front/Dockerfile
+      context: ../frontend
+    depends_on:
+      - api
+    networks:
+      - front_net
+    volumes:
+      - ../frontend:/app
+
 
 
 networks:
   queue_net:
+    driver: bridge
+  front_net:
     driver: bridge
