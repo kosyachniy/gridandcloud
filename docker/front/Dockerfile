@@ -21,4 +21,4 @@ RUN npm install -g @angular/cli
 COPY . /app
 
 # start app
-CMD ng serve --port=4200
+CMD npm start

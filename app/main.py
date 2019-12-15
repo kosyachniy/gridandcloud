@@ -3,10 +3,15 @@ from time import sleep
 import pika
 from pika.exceptions import AMQPConnectionError
 import worker_selfie
+import os
 import logging
 
 
 def main():
+    if not os.path.isdir('./logs'):
+        os.mkdir('logs')
+    with open('./logs/sample.log', 'w') as f:
+        f.write('')
 
     logging.basicConfig(filename="logs/sample.log", level=logging.INFO)
 

@@ -1,0 +1,9 @@
+INFO:pika.adapters.utils.connection_workflow:Pika version 1.1.0 connecting to ('172.18.0.2', 5672)
+INFO:pika.adapters.utils.io_services_utils:Socket connected: <socket.socket fd=7, family=AddressFamily.AF_INET, type=2049, proto=6, laddr=('172.18.0.3', 46068), raddr=('172.18.0.2', 5672)>
+INFO:pika.adapters.utils.connection_workflow:Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f548c4ee048>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f548c4ee048> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>).
+INFO:pika.adapters.utils.connection_workflow:AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f548c4ee048> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.utils.connection_workflow:AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f548c4ee048> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.blocking_connection:Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x7f548c4ee048> params=<ConnectionParameters host=rabbitmq port=5672 virtual_host=/ ssl=False>>
+INFO:pika.adapters.blocking_connection:Created channel=1
+INFO:root:Connection established, channel created
+INFO:root:Consuming methods declared, consuming started
