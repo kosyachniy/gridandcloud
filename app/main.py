@@ -4,6 +4,7 @@ import pika
 from pika.exceptions import AMQPConnectionError
 import worker_selfie
 import logging
+from create_doecker_container import get_new_container
 
 
 def main():
@@ -27,6 +28,7 @@ def main():
         queue='check_user/selfie')
 
     logging.info("Consuming methods declared, consuming started")
+
 
     channel.start_consuming()
 

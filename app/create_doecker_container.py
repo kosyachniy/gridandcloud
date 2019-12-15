@@ -3,7 +3,7 @@ import docker
 
 def get_new_container():
     client = docker.from_env()
-    container = client.containers.run(client.images('worker_dockerfile')) # TODO: specify normal filename
+    return client.containers.run(client.images('dockerfile_fake_worker'))  # TODO: specify normal filename
 
 
 

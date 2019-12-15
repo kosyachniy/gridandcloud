@@ -25,7 +25,7 @@ def return_results(id: str, correct: bool) -> None:
 
     _get_sender_channel().basic_publish(
         exchange='',
-        routing_key='results',
+        routing_key='computation_results',
         body=json.dumps(
             {
                 'id': str(id),
