@@ -2,7 +2,7 @@ import json
 from time import sleep
 import pika
 from pika.exceptions import AMQPConnectionError
-from . import worker_selfie
+import worker_selfie
 import logging
 
 
