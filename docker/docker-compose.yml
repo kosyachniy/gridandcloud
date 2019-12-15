@@ -31,7 +31,7 @@ services:
   api:
     build:
       dockerfile: ../docker/api_app/Dockerfile
-      context: ../app
+      context: ../api
     container_name: "api"
     restart: unless-stopped
     networks:
