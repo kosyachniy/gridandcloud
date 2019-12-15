@@ -3,6 +3,7 @@ import time
 
 from mongodb import db
 import api.tasks as tasks
+import api.account as account
 import api._error as Error
 
 
@@ -12,29 +13,20 @@ class API():
 		self.timestamp = time.time()
 		self.server = server
 		self.socketio = socketio
-		# self.token = token
+		self.token = token
 
-		# # Определение пользователя
+		# Определение пользователя
 
-		# self.user = {
-		# 	'token': None,
-		# 	'admin': 2,
-		# }
+		self.user = {
+			'id': 0,
+			'admin': 2,
+		}
 
-		# if token:
-		# 	self.user = db['users'].find_one({'token': token})
-
-		# 	if not self.user:
-		# 		self.user = {
-		# 			'token': token,
-		# 			'stories': [],
-		# 			'admin': 3,
-		# 			'online': True,
-		# 			'last': self.timestamp,
-		# 		}
-
-		# 		db['users'].insert_one(self.user)
-
+		if token:
+			db_filter = {'id': True, '_id': False}
+			user_id = db['tokens'].find_one({'token': token}, db_filter)
+			if user_id and user_id['id']:
+				self.user = db['users'].find_one({'id': user_id['id']})
 
 	def method(self, name, params={}):
 		# Убираем лишние отступы
