@@ -10,7 +10,7 @@ def sliding_window(image, step_size, window_size):
 
 
 def detect_faces(src):
-    detector = dtc.FaceDetector('./hogfacedetector/scripts/model/weights.pkl')
+    detector = dtc.FaceDetector('./model/weights.pkl')
     boxes = []
     scale_factor = 1
     window_size = (128, 128)
