@@ -13,15 +13,12 @@ def _get_sender_channel():
     connection = pika.BlockingConnection(pika.ConnectionParameters(credentials=credentials, **sender_cfg))
     channel = connection.channel()
     channel.queue_declare(queue='computation_results', durable=True)
-
-    logging.info("Bad adder channel declared")
-
     return channel
 
 
 def return_results(id: str, correct: bool) -> None:
 
-    logging.info(f"In returning results, id: {id}")
+    print(f"In returning results, id: {id}")
 
     _get_sender_channel().basic_publish(
         exchange='',
