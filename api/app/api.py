@@ -12,6 +12,7 @@ import time
 import json
 from functools import lru_cache
 import pika
+import base64
 
 
 # Rabbit
@@ -137,19 +138,23 @@ def upload():
 
 	# Очередь
 
+	print('in upload before publishing')
+
 	_get_sender_channel().basic_publish(
 		exchange='',
 		routing_key='check_user/selfie',
 		body=json.dumps(
 			{
 				'id': name,
-				'img': file.read().decode(),
+				'img': base64.b64encode(file),
 			}
 		),
 		properties=pika.BasicProperties(
 			delivery_mode=2
 		)
 	)
+
+	print('basic publish was successful')
 
 	# Вывод
 
