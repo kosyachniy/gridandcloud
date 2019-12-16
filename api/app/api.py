@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 import string
 import random
 
+from mongodb import db
 from api import API, Error
 
 import time
@@ -112,6 +113,26 @@ def upload():
 	name = generate() + '.' + secure_filename(file.filename).split('.')[-1]
 
 	file.save('app/static/{}'.format(name))
+
+	# База данных
+
+	token = request.form['token']
+
+	user = db['tokens'].find_one({'token': token}, {'_id': False, 'id': True})
+
+	if not user:
+		return {
+			'error': 1,
+		}
+
+	req = {
+		'time': time.time(),
+		'status': 1,
+		'image': name,
+		'user': user['id'],
+	}
+
+	db['tasks'].insert_one(req)
 
 	# Очередь
 
