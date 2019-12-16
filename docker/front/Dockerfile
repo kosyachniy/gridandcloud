@@ -16,7 +16,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 RUN npm install -g @angular/cli
 # RUN npm install
-RUN rm /app/node_modules/webpack-dev-server/lib/Server.js
+# RUN rm /app/node_modules/webpack-dev-server/lib/Server.js
 # COPY _server.js /app/node_modules/webpack-dev-server/lib/Server.js
 RUN echo 'hello world'
 
