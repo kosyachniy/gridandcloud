@@ -19,5 +19,5 @@ env/
 
 # Данные
 
-app/static/
+# app/static/
 /db/

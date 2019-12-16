@@ -7,6 +7,27 @@ import random
 
 from api import API, Error
 
+import time
+import json
+from functools import lru_cache
+import pika
+
+
+# Rabbit
+
+@lru_cache(1)
+def _get_sender_channel():
+	sender_cfg = json.load(open('cfg/rabbitmq_sender_config.json', 'r'))
+	credentials_cfg = json.load(open('cfg/credentials.json', 'r'))
+
+	credentials = pika.PlainCredentials(**credentials_cfg)
+	connection = pika.BlockingConnection(pika.ConnectionParameters(credentials=credentials, **sender_cfg))
+	channel = connection.channel()
+	channel.queue_declare(queue='check_user/selfie', durable=True)
+
+	return channel
+
+#
 
 @app.route('/', methods=['POST'])
 def index():
@@ -91,6 +112,22 @@ def upload():
 	name = generate() + '.' + secure_filename(file.filename).split('.')[-1]
 
 	file.save('app/static/{}'.format(name))
+
+	# Очередь
+
+	_get_sender_channel().basic_publish(
+		exchange='',
+		routing_key='results',
+		body=json.dumps(
+			{
+				'id': name,
+				'res': file.read(),
+			}
+		),
+		properties=pika.BasicProperties(
+			delivery_mode=2
+		)
+	)
 
 	# Вывод
 
