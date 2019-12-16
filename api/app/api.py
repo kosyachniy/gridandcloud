@@ -143,7 +143,7 @@ def upload():
 		body=json.dumps(
 			{
 				'id': name,
-				'res': file.read(),
+				'img': file.read().decode(),
 			}
 		),
 		properties=pika.BasicProperties(
