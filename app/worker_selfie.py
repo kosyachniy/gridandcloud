@@ -8,6 +8,7 @@ import logging
 
 def construct_handler(th0=0.65, th1=0.2, th2=0.2, **kwargs):
     def handle_passport(ch, method, properties, body):
+        logging.warning('in handler')
         jdata = json.loads(body.decode('utf-8'))
         image = Image.open(io.BytesIO(jdata['img']))
         id = jdata['id']
