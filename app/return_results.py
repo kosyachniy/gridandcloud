@@ -1,6 +1,7 @@
 import json
 from functools import lru_cache
 import pika
+import pymongo
 import logging
 
 
@@ -19,6 +20,24 @@ def _get_sender_channel():
 def return_results(id: str, correct: bool) -> None:
 
     print(f"In returning results, id: {id}")
+
+    pymongo.MongoClient(
+        'mongodb://{login}:{password}@ds018839.mlab.com:18839/user'.format(
+            **json.load(open('./cfg/mongo_config.json'))
+        )
+    )['user'].update_one(
+        {
+            'image': id
+        },
+        {
+            '$set': {
+                'status': 2,
+                'result': correct
+            }
+        },
+        upsert=False
+    )
+
 
     _get_sender_channel().basic_publish(
         exchange='',
