@@ -215,3 +215,15 @@ def exit(this, **x):
 	#
 
 	db['tokens'].remove(res['_id'])
+
+# Проверить
+
+def check(this, **x):
+	if this.user['admin'] < 3:
+		return {
+			'error': 1,
+		}
+
+	return {
+		'error': 0,
+	}

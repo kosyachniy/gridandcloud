@@ -3,6 +3,7 @@
     <header class="justify-content-end">
       <button (click)="login()"  class="btn btn-xs btn-outline-secondary" *ngIf="!user.token">Войти</button>
       <button (click)="logout()"  class="btn btn-xs btn-outline-secondary" *ngIf="user.token">Выйти</button>
+      <span class="UserName text-secondary" *ngIf="user.token">{{user.token}}</span>
     </header>
   </div>
 </div>
@@ -27,7 +28,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container" *ngIf="user.token">
   <div class="row mainBlock">
     <div class="col-12">
       <div class="text-center">
@@ -39,12 +40,40 @@
         <p class="nameFile" *ngIf="fileToUpload">{{fileToUpload.name}}</p>
       </div>
       <div class="d-flex justify-content-center">
-        <button class="btn btn-outline-success btn-lg" [disabled]="!user.token" (click)="sendFile()">
+        <button class="btn btn-outline-success btn-lg" [disabled]="!fileToUpload" (click)="sendFile()">
           <div class="spinner-border" role="status" *ngIf="loader">
             <span class="sr-only">Отправка...</span>
           </div>
           Отправить</button>
       </div>
+    </div>
+  </div>
+  <div class="row history" >
+    <div class="col-12">
+      <p class="text-right"><button class="btn btn-outline-primary btn-sm" (click)="reload()">Обновить</button></p>
+      <table class="table table-striped" *ngIf="user.history; else noHistoryBlock">
+        <thead>
+        <tr>
+          <th class="text-center">Дата</th>
+          <th class="text-center">Файл</th>
+          <th class="text-center">Статус</th>
+          <th class="text-center">Результат</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of user.history">
+          <td class="text-center">{{ item.time*1000 | date:'short'}}</td>
+          <td class="text-center"><a [href]="item.image" target="_blank">file</a></td>
+          <td class="text-center">{{item.status | status}}</td>
+          <td class="text-center"><span *ngIf="item.result">{{item.result | status}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+      <ng-template #noHistoryBlock>
+      <p class="text-secondary" >
+        Нет истории для отображения
+      </p>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -13,10 +13,11 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  sendFile(fileToUpload: File) {
+  sendFile(fileToUpload: File, token: string) {
     const endpoint = `${this.baseUrl}/upload`;
     const formdata: FormData = new FormData();
     formdata.append('file', fileToUpload);
+    formdata.append('token', token);
     const req = new HttpRequest('POST', endpoint, formdata, {
       responseType: 'json'
     });
@@ -58,4 +59,15 @@ export class UserService {
     }
     return this.http.post(endpoint, sendData);
   }
+
+  getStory(token: string) {
+    const endpoint = `${this.baseUrl}/`;
+    console.log(token);
+    const sendData = {
+      method: 'tasks.get',
+      token
+  }
+  return this.http.post(endpoint, sendData);
+  }
+
 }
