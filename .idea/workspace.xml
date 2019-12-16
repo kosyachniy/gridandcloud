@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8073d4d-5b03-45ce-8cb0-f9ca9bcaaf07" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +68,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576493099267</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="deleting bad">
+      <created>1576518747551</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576518747551</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,6 +98,7 @@
     <MESSAGE value="return id with result" />
     <MESSAGE value="weights" />
     <MESSAGE value="more weights" />
-    <option name="LAST_COMMIT_MESSAGE" value="more weights" />
+    <MESSAGE value="deleting bad" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleting bad" />
   </component>
 </project>
