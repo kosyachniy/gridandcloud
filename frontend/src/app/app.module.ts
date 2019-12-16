@@ -8,10 +8,15 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from "@angular/forms";
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import { StatusPipe } from './status.pipe';
+registerLocaleData(localeRu, 'ru');
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
+    StatusPipe,
   ],
   imports: [
     BrowserModule,

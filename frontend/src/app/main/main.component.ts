@@ -13,8 +13,10 @@ export class MainComponent implements OnInit {
   fileToUpload: File;
   loader = false;
   user: UserModel = {
-    token: null
+    token: null,
+    history: null
   };
+  historyUser;
   isAuth = false;
   form = this.fb.group({
     login: [null, Validators.required],
@@ -32,12 +34,25 @@ export class MainComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.user.token = null;
+    this.user.history = null;
   }
   checkIsAuth() {
     const token = localStorage.getItem('token');
     if (token) {
+      console.log('auth', token);
       this.user.token = token;
     }
+  }
+  getHistory(token: string) {
+    this.userService.getStory(token).subscribe((res:any) => {
+      if (res.result) {
+        this.user.history = res.result.tasks;
+      }
+      console.log(this.user);
+    })
+  }
+  reload() {
+    this.getHistory(this.user.token);
   }
   changeFile(event) {
     if (event.target.files && event.target.files.length) {
@@ -52,15 +67,17 @@ export class MainComponent implements OnInit {
        this.form.reset();
        this.user.token = res.result.token;
        localStorage.setItem('token', res.result.token );
+       this.getHistory(res.result.token);
      }
    })
   }
   sendFile() {
     this.loader = true;
-    this.userService.sendFile(this.fileToUpload).subscribe((res: any) => {
+    this.userService.sendFile(this.fileToUpload, this.user.token).subscribe((res: any) => {
       console.log(res);
       if (res.status === 200) {
         this.loader = false;
+        this.fileToUpload = null;
       }
     });
   }
