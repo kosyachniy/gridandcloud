@@ -1,7 +1,6 @@
 from . import dtc
 import numpy as np
 from skimage.transform import pyramid_gaussian
-from .nms import non_max_suppression
 
 
 def sliding_window(image, step_size, window_size):
