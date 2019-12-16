@@ -13,7 +13,7 @@ def construct_handler(th0=0.65, th1=0.2, th2=0.2, **kwargs):
         logging.warning('in handler')
         print('in handler')
         jdata = json.loads(body.decode('utf-8'))
-        image = base64.b64decode(jdata['img'])
+        image = plt.imread(f'/static_data/{jdata["fname"]}')
         id = jdata['id']
         logging.warning(f'{id} priletelo!!!!!!')
         print(f'{id} priletelo!!!!!!')

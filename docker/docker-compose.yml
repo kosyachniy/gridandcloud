@@ -12,6 +12,7 @@ services:
       - rabbitmq
     volumes:
       - ../app:/app
+      - ../api/app/static:/static_data
   rabbitmq:
     image: "rabbitmq:latest"
     container_name: "rabbitmq"
