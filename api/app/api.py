@@ -33,6 +33,7 @@ def _get_sender_channel():
 @app.route('/', methods=['POST'])
 def index():
 	x = request.json
+	# print(x)
 
 	#  Не указан метод API
 
@@ -136,19 +137,19 @@ def upload():
 
 	# Очередь
 
-	_get_sender_channel().basic_publish(
-		exchange='',
-		routing_key='results',
-		body=json.dumps(
-			{
-				'id': name,
-				'res': file.read(),
-			}
-		),
-		properties=pika.BasicProperties(
-			delivery_mode=2
-		)
-	)
+	# _get_sender_channel().basic_publish(
+	# 	exchange='',
+	# 	routing_key='results',
+	# 	body=json.dumps(
+	# 		{
+	# 			'id': name,
+	# 			'res': file.read(),
+	# 		}
+	# 	),
+	# 	properties=pika.BasicProperties(
+	# 		delivery_mode=2
+	# 	)
+	# )
 
 	# Вывод
 
