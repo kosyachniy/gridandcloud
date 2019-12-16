@@ -5,3 +5,4 @@ urllib3==1.25.7
 scikit-image==0.15.0
 matplotlib==3.0.3
 scikit-learn==0.20.2
+pymongo==3.8.0
