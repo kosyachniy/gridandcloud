@@ -13,6 +13,7 @@ import json
 from functools import lru_cache
 import pika
 import base64
+import logging
 
 
 # Rabbit
@@ -138,7 +139,7 @@ def upload():
 
 	# Очередь
 
-	print('in upload before publishing')
+	logging.warning('in upload before publishing')
 
 	_get_sender_channel().basic_publish(
 		exchange='',
