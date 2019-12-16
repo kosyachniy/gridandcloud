@@ -1,7 +1,6 @@
 from PIL import Image
 import io
 import json
-import numpy as np
 from return_results import return_results
 from hogmodel.detector import detect_faces
 

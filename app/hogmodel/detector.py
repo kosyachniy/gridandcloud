@@ -1,7 +1,6 @@
 from . import dtc
 import numpy as np
 from skimage.transform import pyramid_gaussian
-from .nms import non_max_suppression
 
 
 def sliding_window(image, step_size, window_size):
@@ -11,7 +10,7 @@ def sliding_window(image, step_size, window_size):
 
 
 def detect_faces(src):
-    detector = dtc.FaceDetector('./hogfacedetector/scripts/model/weights.pkl')
+    detector = dtc.FaceDetector('./model/weights.pkl')
     boxes = []
     scale_factor = 1
     window_size = (128, 128)
