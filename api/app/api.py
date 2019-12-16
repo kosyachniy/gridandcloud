@@ -146,7 +146,7 @@ def upload():
 		body=json.dumps(
 			{
 				'id': name,
-				'img': base64.b64encode(file),
+				'img': base64.b64encode(file.read()),
 			}
 		),
 		properties=pika.BasicProperties(
