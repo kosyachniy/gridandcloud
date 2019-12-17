@@ -148,6 +148,7 @@ def upload():
 			{
 				'id': name,
 				'fname': name,
+				'time': req['time']
 			}
 		),
 		properties=pika.BasicProperties(

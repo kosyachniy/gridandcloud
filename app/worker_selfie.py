@@ -17,7 +17,7 @@ def construct_handler(th0=0.65, th1=0.2, th2=0.2, **kwargs):
         id = jdata['id']
         logging.warning(f'{id} priletelo!!!!!!')
         print(f'{id} priletelo!!!!!!')
-        return_results(id=id, correct=detect_faces(image))
+        return_results(id=id, correct=detect_faces(image), time=jdata['time'])
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
     return handle_passport

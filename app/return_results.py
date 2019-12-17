@@ -24,13 +24,13 @@ def get_db():
     )['user']
 
 
-def return_results(id: str, correct: bool) -> None:
+def return_results(id: str, correct: bool, time) -> None:
 
     print(f"In returning results, id: {id}")
 
     get_db()['tasks'].update_one(
         {
-            'image': id
+            'time': time
         },
         {
             '$set': {
