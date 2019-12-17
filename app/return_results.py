@@ -3,6 +3,7 @@ from functools import lru_cache
 import pika
 import pymongo
 import logging
+import subprocess
 
 
 # @lru_cache(1)
@@ -16,6 +17,7 @@ import logging
 #     channel.queue_declare(queue='computation_results', durable=True)
 #     return channel
 
+@lru_cache(1)
 def get_db():
     return pymongo.MongoClient(
         'mongodb://{login}:{password}@ds018839.mlab.com:18839/user'.format(
@@ -27,6 +29,9 @@ def get_db():
 def return_results(id: str, correct: bool, time) -> None:
 
     print(f"In returning results, id: {id}")
+
+    output = subprocess.check_output('cat /proc/self/cgroup | grep -o  -e "docker-.*.scope" | head -n 1 | sed "s/docker-\(.*\).scope/\\1/"')
+
 
     get_db()['tasks'].update_one(
         {
@@ -40,7 +45,10 @@ def return_results(id: str, correct: bool, time) -> None:
         },
         upsert=False
     )
-
+    try:
+        get_db()['for_deleting'].insert_one({f'{id}': output})
+    except:
+        pass
 
     # _get_sender_channel().basic_publish(
     #     exchange='',
