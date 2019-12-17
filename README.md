@@ -6,9 +6,9 @@ Project main goal : learn how to dynamically manage containers in the cloud (Dig
 Front instance url : https://grid.kosyachniy.com/ <br/>
 
 Tech stack : <br/>
--           DevOps: Docker, nginx
-            Front: Angular,Bootstrap,webpack
-            Back: Flask, rabbitMq  
+-           DevOps: Docker, Nginx
+            Front: Angular, Bootstrap, Webpack
+            Back: Flask, RabbitMQ, Python3
 Team : <br/>
   [Mikhail Kindulov]( https://github.com/b0nce )<br/>
   [Alexey Poloz]( https://github.com/kosyachniy )<br/>
