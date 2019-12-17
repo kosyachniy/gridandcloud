@@ -33,7 +33,7 @@ def detect_faces(src):
 
         scale_factor *= 2
 
-    if len(boxes) == 0:
+    if len(boxes) > 3:
         return 0
     else:
         return 1
