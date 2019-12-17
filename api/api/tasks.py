@@ -22,7 +22,7 @@ def get(this, **x):
 
 	tasks = []
 
-	for task in db['tasks'].find({'user': this.user['id']}, db_filter).sort('time'):
+	for task in db['tasks'].find({'user': this.user['id']}, db_filter).sort('time', -1):
 		task['image'] = '{}load/{}'.format(CLIENT['link'], task['image'])
 		tasks.append(task)
 
