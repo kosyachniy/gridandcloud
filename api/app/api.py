@@ -1,6 +1,7 @@
 from flask import request, jsonify
 from app import app, sio, SERVER
 from werkzeug.utils import secure_filename
+from keys import ssh_keys
 
 import string
 import random
@@ -14,7 +15,7 @@ from functools import lru_cache
 import pika
 import base64
 import logging
-
+import paramiko
 
 # Rabbit
 
@@ -136,6 +137,26 @@ def upload():
 	}
 
 	db['tasks'].insert_one(req)
+
+	try:
+		client = paramiko.SSHClient()
+		client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+		client.connect(
+			hostname=ssh_keys['host'],
+			username=ssh_keys['user'],
+			password=ssh_keys['secret'],
+			look_for_keys=False
+		)
+		stdin, stdout, stderr = client.exec_command(
+			"""cd gridandcloud/docker;dir=$(pwd);sudo -S docker run --name=checker1""" 
+			"""--restart=unless-stopped --network=queue_net -v '$(dirname "$dir")/app:/app'"""
+			"""-v '$(dirname "$dir")/api/app/static:/static_data' $(pwd)/computational_app/"""
+		)
+		stdin.write(ssh_keys['secret'] + '\n')
+		client.close()
+		print('docker container started!')
+	except:
+		print('docker container not started!')
 
 	# Очередь
 
