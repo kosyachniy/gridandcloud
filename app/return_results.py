@@ -35,7 +35,7 @@ def return_results(id: str, correct: bool, time) -> None:
         {
             '$set': {
                 'status': 2,
-                'result': correct
+                'result': int(correct) + 3
             }
         },
         upsert=False

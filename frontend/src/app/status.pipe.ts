@@ -12,10 +12,10 @@ export class StatusPipe implements PipeTransform {
     if (value === 2) {
       return 'Обработано'
     }
-    if (value === true) {
+    if (value === 4) {
       return 'Обнаружено селфи'
     }
-    if (value === false) {
+    if (value === 3) {
       return 'Не обнаружено селфи'
     }
     return null;
